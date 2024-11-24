@@ -32,10 +32,10 @@ def simple_iteration_method(x_0, epsilon):
         condition_number = np.max(np.abs(x_next - x_i))
         comparison_sign = ">=" if condition_number > epsilon else "<="
 
-        print(f"Ітерація {iteration + 1}:")
+        print(f"Iteration {iteration + 1}:")
         print(f"x_{iteration + 1} = [{x_next[0]:.8f}, {x_next[1]:.8f}]")
         print(f"||x_{iteration + 1} - x_{iteration}|| = {condition_number:.8f}")
-        print(f"Перевірка: {condition_number:.8f} {comparison_sign} {epsilon:.8f}")
+        print(f"Check: {condition_number:.8f} {comparison_sign} {epsilon:.8f}")
         print("------------------------")
 
         if condition_number < epsilon:
@@ -45,6 +45,6 @@ def simple_iteration_method(x_0, epsilon):
         iteration += 1
 
 solution = simple_iteration_method(x_0, epsilon)
-print("\nВідповідь:")
+print("\nResponse:")
 print(f"x1 = {solution[0]:.8f}")
 print(f"x2 = {solution[1]:.8f}")
