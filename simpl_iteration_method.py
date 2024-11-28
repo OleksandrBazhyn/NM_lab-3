@@ -1,6 +1,6 @@
 import numpy as np
 
-x_0 = np.array([0, 0])
+x_0 = np.array([-0.79830497, 0.92448388])
 epsilon = 1e-6
 
 
