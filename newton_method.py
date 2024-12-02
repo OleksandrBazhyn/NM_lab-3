@@ -39,6 +39,9 @@ def newton_method(x0, epsilon):
         new_x = x + z
         iteration += 1
 
+        # Обчислення норм
+        norm_inf = np.max(np.abs(z))
+
         # Вивід ітерації у стилі документа
         print(f"Ітерація №{iteration}:")
         print(f"x = ({x[0]:.6f}, {x[1]:.6f})")
@@ -47,11 +50,21 @@ def newton_method(x0, epsilon):
         print(f"[{J[0, 0]:.6f}, {J[0, 1]:.6f}]")
         print(f"[{J[1, 0]:.6f}, {J[1, 1]:.6f}]")
         print(f"Поправки: z = ({z[0]:.6f}, {z[1]:.6f})")
-        print(f"Нове наближення: x = ({new_x[0]:.6f}, {new_x[1]:.6f})")
-        print("-" * 90)
+        print(f"Норма: ||z|| = {norm_inf:.6e}")
         
         # Перевірка умови зупинки
-        if np.linalg.norm(z, ord=np.inf) <= epsilon:
+        if norm_inf <= epsilon:
+            check = "виконана"
+            print(f"Умова зупинки: ||z|| <= epsilon: {norm_inf:.6e} <= {epsilon:.6e} — {check}")
+            print(f"Нове наближення: x = ({new_x[0]:.6f}, {new_x[1]:.6f})")
+            print("-" * 90)
+        else:
+            check = "не виконана"
+            print(f"Умова зупинки: ||z|| <= epsilon: {norm_inf:.6e} >= {epsilon:.6e} — {check}")
+            print(f"Нове наближення: x = ({new_x[0]:.6f}, {new_x[1]:.6f})")
+            print("-" * 90)
+        
+        if norm_inf <= epsilon:
             x = new_x
             break
         
