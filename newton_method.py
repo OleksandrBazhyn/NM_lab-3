@@ -42,26 +42,26 @@ def newton_method(x0, epsilon):
         # Обчислення норм
         norm_inf = np.max(np.abs(z))
 
-        # Вивід ітерації у стилі документа
+        # Вивід ітерації
         print(f"Ітерація №{iteration}:")
-        print(f"x = ({x[0]:.6f}, {x[1]:.6f})")
-        print(f"F(x) = ({F[0]:.6f}, {F[1]:.6f})")
+        print(f"x = ({x[0]:.5g}, {x[1]:.5g})")
+        print(f"F(x) = ({F[0]:.5g}, {F[1]:.5g})")
         print("Матриця Якобі:")
-        print(f"[{J[0, 0]:.6f}, {J[0, 1]:.6f}]")
-        print(f"[{J[1, 0]:.6f}, {J[1, 1]:.6f}]")
-        print(f"Поправки: z = ({z[0]:.6f}, {z[1]:.6f})")
-        print(f"Норма: ||z|| = {norm_inf:.6e}")
+        print(f"[{J[0, 0]:.5g}, {J[0, 1]:.5g}]")
+        print(f"[{J[1, 0]:.5g}, {J[1, 1]:.5g}]")
+        print(f"Поправки: z = ({z[0]:.5g}, {z[1]:.5g})")
+        print(f"Норма: ||z|| = {norm_inf:.5g}")
         
         # Перевірка умови зупинки
         if norm_inf <= epsilon:
             check = "виконана"
-            print(f"Умова зупинки: ||z|| <= epsilon: {norm_inf:.6e} <= {epsilon:.6e} — {check}")
-            print(f"Нове наближення: x = ({new_x[0]:.6f}, {new_x[1]:.6f})")
+            print(f"Умова зупинки: ||z|| <= epsilon: {norm_inf:.5g} <= {epsilon:.5g} — {check}")
+            print(f"Нове наближення: x = ({new_x[0]:.5g}, {new_x[1]:.5g})")
             print("-" * 90)
         else:
             check = "не виконана"
-            print(f"Умова зупинки: ||z|| <= epsilon: {norm_inf:.6e} >= {epsilon:.6e} — {check}")
-            print(f"Нове наближення: x = ({new_x[0]:.6f}, {new_x[1]:.6f})")
+            print(f"Умова зупинки: ||z|| <= epsilon: {norm_inf:.5g} >= {epsilon:.5g} — {check}")
+            print(f"Нове наближення: x = ({new_x[0]:.5g}, {new_x[1]:.5g})")
             print("-" * 90)
         
         if norm_inf <= epsilon:
@@ -81,7 +81,7 @@ try:
     solution, iterations = newton_method(x0, epsilon)
     # Результат
     print("Завершення:")
-    print(f"Розв'язок: x1 = {solution[0]:.6f}, x2 = {solution[1]:.6f}")
+    print(f"Розв'язок: x1 = {solution[0]:.5g}, x2 = {solution[1]:.5g}")
     print(f"Кількість ітерацій: {iterations}")
 except ValueError as e:
     print(f"Помилка: {e}")
